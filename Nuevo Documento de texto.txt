@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fernando</title>
+</head>
+<body>
+    <h1>fernando</h1>
+    <table border ="3">
+        <tr>
+        <td>pedro </td>
+        <td>marcos</td>
+</tr>
+<tr>
+        <td>marcos </td>
+        <td>soliz</td>
+        </tr>
+</table>
+<br>
+<br>
+<br>
+<?php
+$nom="katia";
+$a=5;
+$b=10;
+$sw=true;
+$pi=3.1416;
+
+echo "fernando fernando fernando";
+echo "<br>
+<br>
+<br>
+<br>
+<br>
+<br>";
+print("tareaaa");
+echo"<h2>$nom</h2>";
+echo"<p> backend en web yo codifico $nom</P>";
+echo $a+$b;
+echo "<br>
+<br>
+<br>";
+print"$sw";
+echo "<br>
+<br>
+<br>";
+echo $pi;
+var_dump($sw);
+echo "<br>
+<br>
+<br>";
+var_dump($pi);
+echo "<br>
+<br>
+<br>";
+var_dump($a);
+
+
+
+
+
+
+?>
+
+    
+</body>
+</html>

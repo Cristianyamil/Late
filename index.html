@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pastelería — Inicio</title>
+  <meta name="description" content="Pastelería familiar — Tortas, cupcakes y tartas. Pedidos y catering en La Paz y El Alto." />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root{
+      --accent: #cd182a; 
+      --bg: #faf8f8;
+      --card: #ffffff;
+      --muted: #6b6b6b;
+      --radius: 14px;
+    }
+    html,body{height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+      color: #222;
+      background: var(--bg);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+  
+    .navbar-brand { font-weight: 700; color: var(--accent) !important; letter-spacing: .3px; }
+
+    .nav-link { color: var(--accent) !important; font-weight: 600; }
+    .nav-link:hover { color: #fff !important; background: rgba(255,255,255,0.08); border-radius:6px; }
+
+    .hero-carousel .carousel-item { height: 56vh; min-height: 160px; }
+    .hero-carousel .carousel-item img { object-fit: cover; height:100%; width:100%; }
+
+ 
+    main.container { padding-top: 28px; padding-bottom: 48px; flex: 1 0 auto; max-width: 1150px; }
+
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 18px; }
+    .product-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 8px 22px rgba(18,18,18,0.06);
+      transition: transform .22s ease, box-shadow .22s ease;
+      display:flex; flex-direction:column;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(18,18,18,0.10); }
+    .product-card img { width:100%; height:180px; object-fit:cover; display:block; }
+    .product-body { padding: 14px 16px; flex:1; display:flex; flex-direction:column; }
+    .product-title { font-weight:700; color:#2b2b2b; margin-bottom:6px; }
+    .product-desc { color: var(--muted); font-size:0.95rem; margin-bottom:12px; flex:1; }
+    .product-actions { display:flex; gap:8px; align-items:center; }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+    }
+    .btn-accent:hover { opacity: 0.95; transform: translateY(-1px); }
+
+    .btn-outline-accent {
+      color: var(--accent);
+      border-color: rgba(205,24,42,0.18);
+      background: transparent;
+    }
+    .btn-outline-accent:hover {
+      background: rgba(205,24,42,0.06);
+      color: #000;
+      border-color: rgba(205,24,42,0.28);
+    }
+
+    .about { background: linear-gradient(180deg, rgba(205,24,42,0.03), transparent); padding:18px; border-radius:12px; }
+
+    footer.site-footer {
+      background: var(--accent);
+      color: #fff;
+      padding: 18px 0;
+      text-align: center;
+      border-top: none;
+    }
+    footer.site-footer small { color: #fff; }
+    footer.site-footer a { color: rgba(255,255,255,0.95); text-decoration: underline; }
+    footer.site-footer a:hover { color: #fff; text-decoration: none; }
+
+
+    @media (max-width: 991px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-carousel .carousel-item { height: 44vh; }
+      .navbar .navbar-collapse { background:#fff; padding:12px; border-radius:8px; box-shadow: 0 6px 18px rgba(0,0,0,0.04); }
+      /* Si la nav colapsada muestra fondo blanco y links rojos dentro */
+      .navbar .navbar-collapse .nav-link { color: var(--accent) !important; }
+    }
+    @media (max-width: 575px) {
+      .products-grid { grid-template-columns: 1fr; gap:14px; }
+      .hero-carousel .carousel-item { height: 40vh; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR (con los mismos enlaces que pediste) -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top" aria-label="Navegación principal">
+    <div class="container">
+      <a class="navbar-brand" href="#">Pastelería Late</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+              aria-controls="mainNav" aria-expanded="false" aria-label="Mostrar menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre-nosotros">Tortas especiales</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="productos.html">Catálogo completo</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / CARRUSEL -->
+  <div id="carouselPasteleria" class="carousel slide hero-carousel" data-bs-ride="carousel" aria-label="Imágenes destacadas">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselPasteleria" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselPasteleria" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselPasteleria" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/22.png" class="d-block w-100" alt="Pastelería - torta principal" loading="lazy">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="fw-bold">pasteleria late</h3>
+          <p class="small">Hechas con recetas familiares y los mejores ingredientes.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="images/h2.png" class="d-block w-100" alt="Pastelería - panadería" loading="lazy">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="fw-bold">Pan recién horneado</h3>
+          <p class="small">Aromas que llenan la mañana.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="images/h3.png" class="d-block w-100" alt="Pastelería - postres" loading="lazy">
+        <div class="carousel-caption d-none d-md-block">
+          <h3 class="fw-bold">Postres para eventos</h3>
+          <p class="small">Cajas y porciones para reuniones y celebraciones.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselPasteleria" data-bs-slide="prev" aria-label="Anterior">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselPasteleria" data-bs-slide="next" aria-label="Siguiente">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
+    <!-- Productos -->
+    <section id="productos" aria-labelledby="productosTitle">
+      <h2 id="productosTitle" class="mt-4">Nuestros Productos</h2>
+      <p class="text-muted mb-3">Algunos de nuestros deliciosos productos — toca una tarjeta para ver más o ir al catálogo completo.</p>
+
+      <div class="products-grid" role="list">
+        <article class="product-card" role="listitem" aria-labelledby="p1-title">
+          <img src="images/h1.png" alt="Pastel Chocolate" loading="lazy">
+          <div class="product-body">
+            <div id="p1-title" class="product-title">Pastel Chocolate</div>
+            <div class="product-desc">Relleno cremoso y cobertura ganache.</div>
+            <div class="product-actions">
+              <a href="https://api.whatsapp.com/send?phone=59169808020" class="btn btn-accent btn-sm">Pedir</a>
+              <a href="productos.html" class="btn btn-outline-accent btn-sm">Ver catálogo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" role="listitem" aria-labelledby="p2-title">
+          <img src="images/h4.png" alt="Cupcakes surtidos" loading="lazy">
+          <div class="product-body">
+            <div id="p2-title" class="product-title">Cupcakes surtidos</div>
+            <div class="product-desc">Vainilla, chocolate y red velvet — ideal para cajas mixtas.</div>
+            <div class="product-actions">
+              <a href="https://api.whatsapp.com/send?phone=59169808020" class="btn btn-accent btn-sm">Pedir</a>
+              <a href="productos.html" class="btn btn-outline-accent btn-sm">Ver catálogo</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card" role="listitem" aria-labelledby="p3-title">
+          <img src="images/h5.png" alt="Tarta de frutas" loading="lazy">
+          <div class="product-body">
+            <div id="p3-title" class="product-title">Tarta de Frutas</div>
+            <div class="product-desc">Frutas de estación y crema pastelera casera.</div>
+            <div class="product-actions">
+              <a href="https://api.whatsapp.com/send?phone=59169808020" class="btn btn-accent btn-sm">Pedir</a>
+              <a href="productos.html" class="btn btn-outline-accent btn-sm">Ver catálogo</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sobre nosotros -->
+    <section id="sobre-nosotros" class="mt-5" aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle">Diseños a pedidos</h2>
+      <div class="about mt-2">
+        <p class="mb-0">Somos una pastelería familiar con más de 20 años de experiencia. Empezamos desde abajo y con pasión llegamos a los hogares paceños. Diseños personalizados para cumpleaños, bodas y eventos empresariales.</p>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+   
+        <a href="productos.html" class="btn btn-outline-accent">Ver catálogo completo</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© Contacto:Visítanos en la calle Principal, La Paz - El Alto</small>
+       <small>tel:69808020</small>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(prefersReduced){
+        const carousel = document.querySelector('#carouselPasteleria');
+        if(carousel && bootstrap && bootstrap.Carousel){
+          new bootstrap.Carousel(carousel, { interval: false, ride: false });
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

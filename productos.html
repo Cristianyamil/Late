@@ -1,0 +1,360 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Productos — Pastelería Late</title>
+  <meta name="description" content="Catálogo de productos — Pastelería Late. Tortas, postres, panadería y más. Pedidos por WhatsApp.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Colores */
+    :root{
+      --rosa: #d53815;
+      --rosa-dark: #ce2512;
+      --muted: #6b6b6b;
+      --card-bg: #ffffff;
+      --page-bg: #f7f7f9;
+    }
+
+    html,body { height:100%; }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--page-bg);
+      color: #222;
+      padding-top: 76px; /* espacio para navbar fixed-top */
+    }
+
+    /* Navbar */
+    .bg-rosa { background: linear-gradient(90deg, var(--rosa), var(--rosa-dark)) !important; }
+    .navbar-brand { font-weight:700; letter-spacing:.3px; color: #fff !important; }
+    .nav-link { color: rgba(255,255,255,0.9) !important; font-weight:600; }
+    .nav-link.active { text-decoration: underline; text-underline-offset:6px; }
+
+    /* Page header */
+    .page-header {
+      padding: 18px 0;
+      margin-bottom: 6px;
+      background: linear-gradient(180deg, rgba(255,107,146,0.04), transparent);
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .page-title { color: #222; font-weight:700; }
+
+    /* Grid / cards */
+    .card-product {
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .18s ease, box-shadow .18s ease;
+      border: 0;
+      background: var(--card-bg);
+    }
+    .card-product:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(40,40,40,0.08);
+    }
+    .card-product img { height: 220px; object-fit: cover; width:100%; display:block; }
+
+    .card-title { font-weight:700; margin-bottom: 6px; }
+    .card-text.small { color: var(--muted); font-size: .95rem; }
+
+    .btn-rosa { background: var(--rosa); color: #fff; border: 1px solid transparent; }
+    .btn-rosa:hover { background: var(--rosa-dark); color:#fff; }
+
+    .btn-outline-rosa { color: var(--rosa); border-color: rgba(255,107,146,0.16); background: transparent; }
+    .btn-outline-rosa:hover { background: rgba(255,107,146,0.06); }
+
+    /* Footer */
+    footer.site-footer { background: #fff; border-top: 1px solid rgba(0,0,0,0.04); color: var(--muted); padding: 14px 0; }
+
+    /* Responsive tweaks */
+    @media (max-width: 991px) {
+      .card-product img { height: 180px; }
+    }
+    @media (max-width: 575px) {
+      body { padding-top: 100px; }
+      .card-product img { height: 160px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR (mantengo tus enlaces) -->
+  <nav class="navbar navbar-expand-lg bg-rosa fixed-top shadow-sm" aria-label="Principal">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Pastelería Late</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+              aria-controls="navMain" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Sobre Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link active" href="productos.html" aria-current="page">Productos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto / Ubicación</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CABECERA -->
+  <header class="page-header">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between gap-3 flex-column flex-md-row">
+        <div>
+          <h1 class="page-title h4 mb-1">Catálogo de productos</h1>
+          <p class="text-muted mb-0">Selecciona un producto para ver más detalles y realizar pedidos.</p>
+        </div>
+
+        <!-- Búsqueda / filtro simple -->
+        <div class="ms-auto w-100 w-md-50" style="max-width:420px;">
+          <div class="input-group">
+            <input id="searchInput" class="form-control" placeholder="Buscar producto (ej. Torta, Cupcakes)" aria-label="Buscar productos">
+            <button id="clearSearch" class="btn btn-outline-secondary" type="button" title="Limpiar búsqueda">✕</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container py-4">
+    <div class="row g-4" id="productsGrid">
+
+      <!-- Producto 1 -->
+      <div class="col-sm-6 col-md-4">
+        <article class="card card-product h-100" 
+                 data-title="Cafe Capuchino"
+                 data-desc="Personalizada decoración — tamaño y sabor a elección."
+                 data-price="Desde Bs. 120"
+                 data-img="images/h6.png">
+          <img src="images/h6.png" class="card-img-top" alt="Pastel chocolate" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Cafe Capuchino</h5>
+            <p class="card-text small">Desde Bs. 120 — personalizada decoración.</p>
+            <div class="mt-auto d-flex gap-2">
+              <button class="btn btn-outline-rosa btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                      data-bs-title="Cafe Capuchino" data-bs-desc="Personalizada decoración — tamaño y sabor a elección." data-bs-img="images/h6.png" aria-label="Ver Cafe Capuchino">Ver</button>
+              <a class="btn btn-rosa btn-sm" href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" rel="noopener">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="col-sm-6 col-md-4">
+        <article class="card card-product h-100" data-img="images/h7.png">
+          <img src="images/h7.png" class="card-img-top" alt="Tarta de frutas" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Croissand</h5>
+            <p class="card-text small">Hasta 10 porciones — Bs. 7.</p>
+            <div class="mt-auto d-flex gap-2">
+              <button class="btn btn-outline-rosa btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                      data-bs-title="Croissand" data-bs-desc="Hasta 10 porciones — Bs. 7." data-bs-img="images/h7.png" aria-label="Ver Croissand">Ver</button>
+              <a class="btn btn-rosa btn-sm" href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" rel="noopener">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="col-sm-6 col-md-4">
+        <article class="card card-product h-100" data-img="images/h8.png">
+          <img src="images/h8.png" class="card-img-top" alt="Cupcakes" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Cuñape</h5>
+            <p class="card-text small">Desde Bs. 5 c/u — mínimo 6 unidades.</p>
+            <div class="mt-auto d-flex gap-2">
+              <button class="btn btn-outline-rosa btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                      data-bs-title="Cuñape" data-bs-desc="Desde Bs. 5 c/u — mínimo 6 unidades." data-bs-img="images/h8.png" aria-label="Ver Cuñape">Ver</button>
+              <a class="btn btn-rosa btn-sm" href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" rel="noopener">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Producto 4 -->
+      <div class="col-sm-6 col-md-4">
+        <article class="card card-product h-100" data-img="images/h9.png">
+          <img src="images/h9.png" class="card-img-top" alt="Macarons" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Batidos de crema</h5>
+            <p class="card-text small">Elegante caja surtida — perfecto regalo.</p>
+            <div class="mt-auto d-flex gap-2">
+              <button class="btn btn-outline-rosa btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                      data-bs-title="Batidos de crema" data-bs-desc="Elegante caja surtida — perfecto regalo." data-bs-img="images/h9.png">Ver</button>
+              <a class="btn btn-rosa btn-sm" href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" rel="noopener">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Producto 5 -->
+      <div class="col-sm-6 col-md-4">
+        <article class="card card-product h-100" data-img="images/h10.png">
+          <img src="images/h10.png" class="card-img-top" alt="Cheesecake" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Empadas</h5>
+            <p class="card-text small">Textura cremosa y base crujiente.</p>
+            <div class="mt-auto d-flex gap-2">
+              <button class="btn btn-outline-rosa btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                      data-bs-title="Empadas" data-bs-desc="Textura cremosa y base crujiente." data-bs-img="images/h10.png">Ver</button>
+              <a class="btn btn-rosa btn-sm" href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" rel="noopener">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="col-sm-6 col-md-4">
+        <article class="card card-product h-100" data-img="images/h12.png">
+          <img src="images/h12.png" class="card-img-top" alt="Brownie" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Galletas</h5>
+            <p class="card-text small">Denso y chocolatoso — porciones individuales.</p>
+            <div class="mt-auto d-flex gap-2">
+              <button class="btn btn-outline-rosa btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                      data-bs-title="Galletas" data-bs-desc="Denso y chocolatoso — porciones individuales." data-bs-img="images/h12.png">Ver</button>
+              <a class="btn btn-rosa btn-sm" href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" rel="noopener">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Producto 7 -->
+      <div class="col-sm-6 col-md-4">
+        <article class="card card-product h-100" data-img="images/h13.png">
+          <img src="images/h13.png" class="card-img-top" alt="Torta dia del niño" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Torta para el día del niño</h5>
+            <p class="card-text small">Decoraciones temáticas y personalizadas.</p>
+            <div class="mt-auto d-flex gap-2">
+              <button class="btn btn-outline-rosa btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                      data-bs-title="Torta para el día del niño" data-bs-desc="Decoraciones temáticas y personalizadas." data-bs-img="images/h13.png">Ver</button>
+              <a class="btn btn-rosa btn-sm" href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" rel="noopener">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Producto 8 -->
+      <div class="col-sm-6 col-md-4">
+        <article class="card card-product h-100" data-img="images/h14.png">
+          <img src="images/h14.png" class="card-img-top" alt="Torta" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Torta</h5>
+            <p class="card-text small">Textura cremosa y base crujiente.</p>
+            <div class="mt-auto d-flex gap-2">
+              <button class="btn btn-outline-rosa btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                      data-bs-title="Torta" data-bs-desc="Textura cremosa y base crujiente." data-bs-img="images/h14.png">Ver</button>
+              <a class="btn btn-rosa btn-sm" href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" rel="noopener">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Producto 9 -->
+      <div class="col-sm-6 col-md-4">
+        <article class="card card-product h-100" data-img="images/h15.png">
+          <img src="images/h15.png" class="card-img-top" alt="Diseños para tortas" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Diseños para tortas</h5>
+            <p class="card-text small">Diseños personalizados para todo tipo de eventos.</p>
+            <div class="mt-auto d-flex gap-2">
+              <button class="btn btn-outline-rosa btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#productModal"
+                      data-bs-title="Diseños para tortas" data-bs-desc="Diseños personalizados para todo tipo de eventos." data-bs-img="images/h15.png">Ver</button>
+              <a class="btn btn-rosa btn-sm" href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" rel="noopener">Pedir</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div> <!-- row -->
+  </main>
+
+  <!-- MODAL para ver producto -->
+  <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="productModalLabel">Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <img id="modalImage" src="" alt="" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6 d-flex flex-column">
+              <h4 id="modalTitle" class="mb-2"></h4>
+              <p id="modalDesc" class="text-muted mb-3"></p>
+              <p id="modalPrice" class="fw-semibold mb-3"></p>
+              <div class="mt-auto d-flex gap-2">
+                <a id="modalWhats" class="btn btn-rosa" href="#" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+                <button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER (mantengo tus enlaces de redes / WA) -->
+  <footer class="site-footer mt-auto">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <div><strong>Pastelería Late</strong></div>
+      <div>
+        <a href="https://api.whatsapp.com/send?phone=59169808020&fbclid=IwVERDUAM9LsZleHRuA2FlbQIxMAABHmLxun3aw2znkoyhPl2L5esCyaFbjXxRis2PrBcxJWcIbLOg9lFiAV4VV-XJ_aem_wgQ6mvJYarSgyzRRohkWmA" target="_blank" class="me-3"><i class="fab fa-whatsapp me-1"></i>WhatsApp</a>
+        <a href="https://www.facebook.com/LateProcafe/?locale=es_LA" target="_blank" class="me-3"><i class="fab fa-facebook-f me-1"></i>Facebook</a>
+        <a href="https://www.tiktok.com/@latepasteleriaycafeteria" target="_blank"><i class="fab fa-tiktok me-1"></i>TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Rellenar modal al abrir (bootstrap 5)
+    const productModal = document.getElementById('productModal');
+    productModal.addEventListener('show.bs.modal', event => {
+      const button = event.relatedTarget;
+      const title = button.getAttribute('data-bs-title') || button.closest('.card')?.dataset.title || 'Producto';
+      const desc = button.getAttribute('data-bs-desc') || button.closest('.card')?.dataset.desc || '';
+      const img = button.getAttribute('data-bs-img') || button.closest('.card')?.dataset.img || '';
+      const price = button.getAttribute('data-bs-price') || button.closest('.card')?.dataset.price || '';
+
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalImage').src = img;
+      document.getElementById('modalImage').alt = title;
+      document.getElementById('modalPrice').textContent = price;
+
+      // Mantener tu enlace exacto de WhatsApp (puedes personalizar el texto si quieres)
+      const waBase = "https://api.whatsapp.com/send?phone=59169808020";
+      const defaultText = encodeURIComponent("Hola, quiero pedir: " + title + ". ");
+      document.getElementById('modalWhats').href = waBase + "&text=" + defaultText;
+    });
+
+    // Búsqueda simple por título/descr
+    (function(){
+      const grid = document.getElementById('productsGrid');
+      const input = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearSearch');
+
+      function filter(){
+        const q = input.value.trim().toLowerCase();
+        const cards = grid.querySelectorAll('.card-product');
+        cards.forEach(c => {
+          const t = (c.querySelector('.card-title')?.textContent || '') + ' ' + (c.querySelector('.card-text')?.textContent || '');
+          c.parentElement.style.display = t.toLowerCase().includes(q) ? '' : 'none';
+        });
+      }
+      input.addEventListener('input', filter);
+      clearBtn.addEventListener('click', () => { input.value=''; filter(); input.focus(); });
+    })();
+  </script>
+</body>
+</html>
